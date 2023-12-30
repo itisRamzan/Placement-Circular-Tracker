@@ -110,8 +110,12 @@ const createExcelFileIfNeeded = () => {
     }
 };
 
-createExcelFileIfNeeded();
-fetchDataAndSaveToExcelIfNeeded();
-cron.schedule('0 */1 * * *', () => {
+const circularTracker = ()=>{
+    createExcelFileIfNeeded();
     fetchDataAndSaveToExcelIfNeeded();
-});
+    cron.schedule('0 */1 * * *', () => {
+        fetchDataAndSaveToExcelIfNeeded();
+    });
+}
+
+module.exports = circularTracker;
