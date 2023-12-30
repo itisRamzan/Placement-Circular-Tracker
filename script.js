@@ -112,6 +112,6 @@ const createExcelFileIfNeeded = () => {
 
 createExcelFileIfNeeded();
 fetchDataAndSaveToExcelIfNeeded();
-cron.schedule('0 9 * * *', () => {
+cron.schedule('0 */1 * * *', () => {
     fetchDataAndSaveToExcelIfNeeded();
 });
